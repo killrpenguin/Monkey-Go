@@ -1,10 +1,17 @@
 package main
 
 import (
+	"Monkey/internal/repl"
 	"fmt"
-	"github.com/killrpenguin/Monkey/internal/lexer"
+	"os"
+	"os/user"
 )
 
 func main() {
-	fmt.print("Hello World!")
+	user, err := user.Current()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("Hello %s! Welcome to Monkey-Lang!\n", user.Username)
+	repl.Start(os.Stdin, os.Stdout)
 }

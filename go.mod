@@ -1,3 +1,3 @@
-module github.com/killrpenguin/Monkey
+module Monkey
 
 go 1.22.2
