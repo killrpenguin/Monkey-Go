@@ -32,20 +32,20 @@ func newToken(tokenType token.TokenType, ch byte) token.Token {
 	return token.Token{Type: tokenType, Literal: string(ch)}
 }
 
-func (lexer *Lexer) readIdentifier() string {
-	pos := lexer.pos
-	for lexer.isLetter(lexer.ch) {
-		lexer.readChar()
-	}
-	return lexer.input[pos:lexer.pos]
-}
-
 func (lexer *Lexer) isLetter(ch byte) bool {
 	return 'a' <= ch && ch <= 'z' || 'A' <= ch && ch <= 'Z' || ch == '_' || ch == '?'
 }
 
 func (lexer *Lexer) isDigit(ch byte) bool {
 	return '0' <= ch && ch <= '9' || ch == '.'
+}
+
+func (lexer *Lexer) readIdentifier() string {
+	pos := lexer.pos
+	for lexer.isLetter(lexer.ch) {
+		lexer.readChar()
+	}
+	return lexer.input[pos:lexer.pos]
 }
 
 func (lexer *Lexer) readNumber() string {
